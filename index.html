@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>愤怒的小鸟物理演示</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>愤怒的小鸟（自制物理引擎）</h1>
+    <div class="controls">
+      <button id="playButton">开始关卡</button>
+      <button id="editorToggle">切换关卡编辑器</button>
+      <button id="saveLevel">保存关卡</button>
+      <button id="loadLevel">读取关卡</button>
+      <label>
+        建筑材质：
+        <select id="materialSelect">
+          <option value="wood">木头</option>
+          <option value="stone">石头</option>
+          <option value="ice">冰块</option>
+        </select>
+      </label>
+      <label>
+        鸟类：
+        <select id="birdSelect">
+          <option value="blue">三分鸟</option>
+          <option value="yellow">加速鸟</option>
+          <option value="black">爆炸鸟</option>
+        </select>
+      </label>
+      <label>
+        元素：
+        <select id="elementSelect">
+          <option value="block">方块</option>
+          <option value="pig">小猪</option>
+          <option value="bird">鸟</option>
+        </select>
+      </label>
+    </div>
+  </header>
+  <main>
+    <canvas id="game" width="1100" height="620"></canvas>
+    <aside>
+      <h3>玩法说明</h3>
+      <ul>
+        <li>按住弹弓并拖拽，松开发射小鸟。</li>
+        <li>飞行中按空格或点击画布触发小鸟技能。</li>
+        <li>编辑器模式下点击画布放置方块/小猪/鸟。</li>
+        <li>点击“保存关卡”会存到浏览器本地，读取可恢复。</li>
+      </ul>
+      <section class="legend">
+        <div><span class="color wood"></span> 木头（轻，弹性高）</div>
+        <div><span class="color stone"></span> 石头（重，坚固）</div>
+        <div><span class="color ice"></span> 冰块（轻，脆）</div>
+        <div><span class="color pig"></span> 小猪（目标）</div>
+      </section>
+    </aside>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
