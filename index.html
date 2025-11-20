@@ -3,61 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>愤怒的小鸟物理演示</title>
+  <title>中式台球 - 黑八十六彩</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>愤怒的小鸟（自制物理引擎）</h1>
-    <div class="controls">
-      <button id="playButton">开始关卡</button>
-      <button id="editorToggle">切换关卡编辑器</button>
-      <button id="saveLevel">保存关卡</button>
-      <button id="loadLevel">读取关卡</button>
-      <label>
-        建筑材质：
-        <select id="materialSelect">
-          <option value="wood">木头</option>
-          <option value="stone">石头</option>
-          <option value="ice">冰块</option>
-        </select>
-      </label>
-      <label>
-        鸟类：
-        <select id="birdSelect">
-          <option value="blue">三分鸟</option>
-          <option value="yellow">加速鸟</option>
-          <option value="black">爆炸鸟</option>
-        </select>
-      </label>
-      <label>
-        元素：
-        <select id="elementSelect">
-          <option value="block">方块</option>
-          <option value="pig">小猪</option>
-          <option value="bird">鸟</option>
-        </select>
-      </label>
+  <header class="topbar">
+    <div>
+      <h1>黑八十六彩 | 中式台球对战</h1>
+      <p class="subtitle">双人对局 · 仿真球杆拖拽击球 · 规则提示与犯规判定</p>
     </div>
+    <button id="resetGame" class="primary">重新开局</button>
   </header>
-  <main>
-    <canvas id="game" width="1100" height="620"></canvas>
-    <aside>
-      <h3>玩法说明</h3>
+
+  <section class="status-panel">
+    <div class="player" id="playerA">
+      <div class="label">玩家 A</div>
+      <div class="assignment">未分组</div>
+      <div class="score">进球：0</div>
+    </div>
+    <div class="turn-indicator">当前击球：<span id="turnName">玩家 A</span></div>
+    <div class="player" id="playerB">
+      <div class="label">玩家 B</div>
+      <div class="assignment">未分组</div>
+      <div class="score">进球：0</div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <div class="table-wrapper">
+      <canvas id="table" width="1000" height="550"></canvas>
+    </div>
+    <aside class="guide">
+      <h2>操作说明</h2>
       <ul>
-        <li>按住弹弓并拖拽，松开发射小鸟。</li>
-        <li>飞行中按空格或点击画布触发小鸟技能。</li>
-        <li>编辑器模式下点击画布放置方块/小猪/鸟。</li>
-        <li>点击“保存关卡”会存到浏览器本地，读取可恢复。</li>
+        <li>确保所有球静止后，按住白球附近并向后拖拽球杆，松开即可击打。</li>
+        <li>开局或犯规后，白球会自动摆放到顶点区域（开球线内）。</li>
+        <li>先落袋的彩球决定双方分组：1-7 为 <strong>实色</strong>，9-15 为 <strong>花色</strong>。</li>
+        <li>非己方球或白球落袋视为犯规，回合交给另一位玩家。</li>
+        <li>己方彩球全部清台后，再击打 8 号黑球，率先将其打进即获胜。</li>
       </ul>
-      <section class="legend">
-        <div><span class="color wood"></span> 木头（轻，弹性高）</div>
-        <div><span class="color stone"></span> 石头（重，坚固）</div>
-        <div><span class="color ice"></span> 冰块（轻，脆）</div>
-        <div><span class="color pig"></span> 小猪（目标）</div>
-      </section>
+      <div class="legend">
+        <span class="legend-dot solid"></span> 实色 1-7
+        <span class="legend-dot stripe"></span> 花色 9-15
+        <span class="legend-dot black"></span> 黑球 8
+        <span class="legend-dot cue"></span> 白球
+      </div>
     </aside>
   </main>
+
+  <footer class="footer">物理模拟采用简化版本，仅为策略和走位练习提供直观反馈。</footer>
   <script type="module" src="src/main.js"></script>
 </body>
 </html>
